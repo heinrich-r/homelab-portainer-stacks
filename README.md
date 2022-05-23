@@ -34,6 +34,19 @@ Environment variables:
 >
 > GUID
 >
-> TZ
+> TZ (example: Africa/Johannesburg)
 >
 > PORT
+
+
+### **3. Pi-hole
+Network-wide Ad Blocking
+
+[Github link](https://github.com/pi-hole/docker-pi-hole)
+
+[Docker Compose](pihole/docker-compose.yaml)
+
+Environment variables:
+> TZ (example: Africa/Johannesburg)
+>
+> WEBPASSWORD (example: randomPassword)
