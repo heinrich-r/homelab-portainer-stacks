@@ -1,0 +1,16 @@
+---
+version: "3"
+services:
+  homeassistant:
+    image: lscr.io/linuxserver/homeassistant:latest
+    container_name: homeassistant
+    network_mode: host
+    environment:
+      - PUID
+      - PGID
+      - TZ
+    volumes:
+      - homeassistant_data:/config
+    restart: unless-stopped
+volumes:
+  homeassistant_data:
