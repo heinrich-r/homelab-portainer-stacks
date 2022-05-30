@@ -1,20 +1,20 @@
 # homelab-portainer-stacks
 Collection of docker-compose recipes for my HomeLab
 
-1. [Watchtower](#watchtower)
-2. [Heimdall](#heimdall)
+[Watchtower](#watchtower)
+[Heimdall](#heimdall)
+[PiHole](#pihole)
+[Minecraft](#pihole)
 
 *Coming soon..*
 
 - [Grafana & Prometheus](https://grafana.com/)
 - [Apache Guacamole](https://guacamole.apache.org/)
-- [PiHole](https://pi-hole.net/)
 - [Buildkite Agent](https://github.com/buildkite/agent)
-
 
 ---
 
-### **1. Watchtower** <a name="watchtower"></a>
+### **Watchtower** <a name="watchtower"></a>
 A process for automating Docker container base image updates.
 
 [Github link](https://github.com/containrrr/watchtower)
@@ -22,7 +22,7 @@ A process for automating Docker container base image updates.
 [Docker Compose](watchtower/docker-compose.yaml)
 
 
-### **2. Heimdall** <a name="heimdall"></a>
+### **Heimdall** <a name="heimdall"></a>
 An application dashboard for all your web applications.
 
 [Github link](https://github.com/linuxserver/Heimdall)
@@ -31,15 +31,12 @@ An application dashboard for all your web applications.
 
 Environment variables:
 > PUID
->
 > GUID
->
 > TZ (example: Africa/Johannesburg)
->
 > PORT
 
 
-### **3. Pi-hole
+### **Pi-hole** <a name="pihole"></a>
 Network-wide Ad Blocking
 
 [Github link](https://github.com/pi-hole/docker-pi-hole)
@@ -48,5 +45,17 @@ Network-wide Ad Blocking
 
 Environment variables:
 > TZ (example: Africa/Johannesburg)
->
 > WEBPASSWORD (example: randomPassword)
+
+
+### **Minecraft** <a name="minecraft"></a>
+Minecraft Bedrock server
+
+Environment variables:
+> EULA: "TRUE"
+> SERVER_NAME: {server name}
+> GAMEMODE: survival
+> DIFFICULTY: normal
+> VERSION: 1.18.31.04
+
+      
