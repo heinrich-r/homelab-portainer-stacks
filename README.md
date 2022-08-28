@@ -4,13 +4,9 @@ Collection of docker-compose recipes for my HomeLab
 [Watchtower](#watchtower)
 [Heimdall](#heimdall)
 [PiHole](#pihole)
-[Minecraft](#pihole)
 
 *Coming soon..*
 
-- [Grafana & Prometheus](https://grafana.com/)
-- [Apache Guacamole](https://guacamole.apache.org/)
-- [Buildkite Agent](https://github.com/buildkite/agent)
 
 ---
 
@@ -46,16 +42,3 @@ Network-wide Ad Blocking
 Environment variables:
 > TZ (example: Africa/Johannesburg)
 > WEBPASSWORD (example: randomPassword)
-
-
-### **Minecraft** <a name="minecraft"></a>
-Minecraft Bedrock server
-
-Environment variables:
-> EULA: "TRUE"
-> SERVER_NAME: {server name}
-> GAMEMODE: survival
-> DIFFICULTY: normal
-> VERSION: 1.18.31.04
-
-      
