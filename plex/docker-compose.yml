@@ -10,7 +10,7 @@ services:
       - PGID=1000
       - VERSION=docker
     volumes:
-      - /mnt/resources/plex/config:/config
-      - /mnt/resources/plex/tv:/tv
-      - /mnt/resources/plex/movies:/movies
+      - /mnt/storage/plex/config:/config
+      - /mnt/storage/plex/tv:/tv
+      - /mnt/storage/plex/movies:/movies
     restart: unless-stopped
