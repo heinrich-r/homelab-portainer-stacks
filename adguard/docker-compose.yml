@@ -18,4 +18,4 @@ services:
       - "3003:3000/tcp"
     restart: unless-stopped
 volumes:
-  adguard:
+  adguard_data:
