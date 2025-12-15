@@ -8,6 +8,8 @@ Collection of docker-compose recipes for my HomeLab
 - [Tautulli](#tautulli)
 - [n8n](#n8n)
 - [Obsidian](#obsidian)
+- [Postgres](#postgres)
+- [Redis](#redis)
 
 *More Coming soon..*
 
@@ -92,4 +94,30 @@ Knowledge base
 Environment variables:
 > PUID
 > PGID
+> TZ
+
+### **Postgres** <a name="postgres"></a>
+Relational Database
+
+[Web link](https://www.postgresql.org/)
+
+[Docker Compose](postgres/docker-compose.yml)
+
+Environment variables:
+> POSTGRES_USER
+> POSTGRES_PASSWORD
+> POSTGRES_DB
+> POSTGRES_DATA_PATH
+> TZ
+
+### **Redis** <a name="redis"></a>
+In-memory Data Structure Store
+
+[Web link](https://redis.io/)
+
+[Docker Compose](redis/docker-compose.yml)
+
+Environment variables:
+> REDIS_PASSWORD
+> REDIS_DATA_PATH
 > TZ
