@@ -6,6 +6,8 @@ Collection of docker-compose recipes for my HomeLab
 - [PiHole](#pihole)
 - [Plex](#plex)
 - [Tautulli](#tautulli)
+- [n8n](#n8n)
+- [Obsidian](#obsidian)
 
 *More Coming soon..*
 
@@ -63,3 +65,31 @@ Media hosting server
 
 Environment variables:
 > TZ (example: Africa/Johannesburg)
+
+### **n8n** <a name="n8n"></a>
+Workflow Automation Tool
+
+[Web link](https://n8n.io/)
+
+[Docker Compose](n8n/docker-compose.yml)
+
+Environment variables:
+> N8N_HOST
+> N8N_PORT
+> N8N_PROTOCOL
+> NODE_ENV
+> WEBHOOK_URL
+> GENERIC_TIMEZONE
+> TZ
+
+### **Obsidian** <a name="obsidian"></a>
+Knowledge base
+
+[Web link](https://obsidian.md/)
+
+[Docker Compose](obsidian/docker-compose.yml)
+
+Environment variables:
+> PUID
+> PGID
+> TZ
