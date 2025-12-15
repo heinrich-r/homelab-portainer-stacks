@@ -1,0 +1,122 @@
+---
+version: "3"
+services:
+  # Pihole
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "8002:80/tcp"
+    environment:
+      - TZ=${TZ}
+      - WEBPASSWORD=${WEBPASSWORD}
+    volumes:
+      - ${PATH_PIHOLE}:/etc/pihole
+      - './pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+
+  # Plex
+  plex:
+    image: linuxserver/plex
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - VERSION=${PLEX_VERSION}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+    volumes:
+      - ${PATH_CONFIG}:/config
+      - ${PATH_TV}:/tv
+      - ${PATH_MOVIES}:/movies
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  # Watchtower
+  watchtower:
+    image: v2tec/watchtower
+    container_name: watchtower
+    environment:
+      - WATCHTOWER_NOTIFICATIONS=${WATCHTOWER_NOTIFICATIONS}
+      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
+  # n8n
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=${N8N_HOST}
+      - N8N_PORT=${N8N_PORT}
+      - N8N_PROTOCOL=${N8N_PROTOCOL}
+      - NODE_ENV=${NODE_ENV}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+      - TZ=${TZ}
+    volumes:
+      - ${PATH_N8N}:/home/node/.n8n
+
+  # Obsidian
+  obsidian:
+    image: lscr.io/linuxserver/obsidian:latest
+    container_name: obsidian
+    restart: unless-stopped
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - DRINODE=/dev/dri/renderD128 #optional
+    volumes:
+      - ${PATH_OBSIDIAN}:/config
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    shm_size: "1gb"
+
+  # Postgres
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - TZ=${TZ}
+    volumes:
+      - ${POSTGRES_DATA_PATH}:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # Redis
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: unless-stopped
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ${REDIS_DATA_PATH}:/data
+    ports:
+      - "6379:6379"
+

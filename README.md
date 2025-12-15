@@ -1,5 +1,7 @@
 # homelab-portainer-stacks
-Collection of docker-compose recipes for my HomeLab
+Collection of docker-compose recipes for my HomeLab.
+
+**Note**: All stacks have been merged into a single `docker-compose.yml` file in the root directory.
 
 - [Watchtower](#watchtower)
 - [Heimdall](#heimdall)
@@ -15,109 +17,43 @@ Collection of docker-compose recipes for my HomeLab
 
 ---
 
+## Unified Configuration
+
+All services are defined in the root `docker-compose.yml`.
+Configuration is managed via the `.env` file (see `.env.example`).
+
 ### **Watchtower** <a name="watchtower"></a>
 A process for automating Docker container base image updates.
-
 [GitHub link](https://github.com/containrrr/watchtower)
-
-[Docker Compose](watchtower/docker-compose.yml)
-
 
 ### **Heimdall** <a name="heimdall"></a>
 An application dashboard for all your web applications.
-
 [GitHub link](https://github.com/linuxserver/Heimdall)
-
-[Docker Compose](heimdall/docker-compose.yml)
-
-Environment variables:
-> PUID
-> GUID
-> TZ (example: Africa/Johannesburg)
-> PORT
-
 
 ### **Pi-hole** <a name="pihole"></a>
 Network-wide Ad Blocking
-
 [GitHub link](https://github.com/pi-hole/docker-pi-hole)
-
-[Docker Compose](pihole/docker-compose.yml)
-
-Environment variables:
-> TZ (example: Africa/Johannesburg)
-> WEBPASSWORD (example: randomPassword)
 
 ### **Plex** <a name="plex"></a>
 Media hosting server
-
 [Web link](https://www.plex.tv/your-media/)
-
-[Docker Compose](plex/docker-compose.yml)
-
-Environment variables:
-> N/A
 
 ### **Tautulli** <a name="Tautulli"></a>
 Media hosting server
-
 [GitHub link](https://github.com/Tautulli/Tautulli)
-
-[Docker Compose](tautulli/docker-compose.yml)
-
-Environment variables:
-> TZ (example: Africa/Johannesburg)
 
 ### **n8n** <a name="n8n"></a>
 Workflow Automation Tool
-
 [Web link](https://n8n.io/)
-
-[Docker Compose](n8n/docker-compose.yml)
-
-Environment variables:
-> N8N_HOST
-> N8N_PORT
-> N8N_PROTOCOL
-> NODE_ENV
-> WEBHOOK_URL
-> GENERIC_TIMEZONE
-> TZ
 
 ### **Obsidian** <a name="obsidian"></a>
 Knowledge base
-
 [Web link](https://obsidian.md/)
-
-[Docker Compose](obsidian/docker-compose.yml)
-
-Environment variables:
-> PUID
-> PGID
-> TZ
 
 ### **Postgres** <a name="postgres"></a>
 Relational Database
-
 [Web link](https://www.postgresql.org/)
-
-[Docker Compose](postgres/docker-compose.yml)
-
-Environment variables:
-> POSTGRES_USER
-> POSTGRES_PASSWORD
-> POSTGRES_DB
-> POSTGRES_DATA_PATH
-> TZ
 
 ### **Redis** <a name="redis"></a>
 In-memory Data Structure Store
-
 [Web link](https://redis.io/)
-
-[Docker Compose](redis/docker-compose.yml)
-
-Environment variables:
-> REDIS_PASSWORD
-> REDIS_DATA_PATH
-> TZ
